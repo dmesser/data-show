@@ -82,23 +82,23 @@ Parameters:
 Mappings:
   AWSRegion2AMI:
     us-east-1:
-      ami: ami-2b9f3354
+      ami: ami-a08ec7df
     us-east-2:
       ami: NOT_SUPPORTED
     us-west-1:
       ami: NOT_SUPPORTED
     us-west-2:
-      ami: ami-a7711edf
+      ami: ami-5d622e25
     eu-west-1:
-      ami: ami-6652721f
+      ami: ami-ae6d6f44
     eu-central-1:
-      ami: ami-aef3d645
+      ami: ami-e0417c0b
     ap-northeast-1:
       ami: NOT_SUPPORTED
     ap-northeast-2:
       ami: NOT_SUPPORTED
     ap-southeast-1:
-      ami: ami-70092b0c
+      ami: ami-8dd8d9f1
     ap-southeast-2:
       ami: NOT_SUPPORTED
     sa-east-1:
@@ -601,7 +601,7 @@ Resources:
         FromPort: 3000
         ToPort: 3000
         CidrIp: 0.0.0.0/0
-      - IpProtocol: tcp        
+      - IpProtocol: tcp
         FromPort: 5000
         ToPort: 5000
         CidrIp: 0.0.0.0/0
@@ -612,7 +612,7 @@ Resources:
       - IpProtocol: tcp
         FromPort: 7000
         ToPort: 7000
-        CidrIp: 0.0.0.0/0                                          
+        CidrIp: 0.0.0.0/0
       - IpProtocol: icmp
         FromPort: -1
         ToPort: -1
@@ -1950,19 +1950,19 @@ Resources:
           Ebs:
             VolumeSize: '100'
             VolumeType: 'gp2'
-            DeleteOnTermination: 'true'  
+            DeleteOnTermination: 'true'
         - DeviceName: /dev/xvdd
           VirtualName: CephNode1-disk3
           Ebs:
             VolumeSize: '100'
             VolumeType: 'gp2'
-            DeleteOnTermination: 'true'  
+            DeleteOnTermination: 'true'
         - DeviceName: /dev/xvde
           VirtualName: CephNode1-disk4
           Ebs:
             VolumeSize: '100'
             VolumeType: 'gp2'
-            DeleteOnTermination: 'true'                                
+            DeleteOnTermination: 'true'
       Tags:
       - Key: Application
         Value:
@@ -1984,7 +1984,7 @@ Resources:
               runcmd:
               - 'curl -X PUT -H "Content-Type:" --data-binary "{ \"Status\" : \"SUCCESS\", \"Reason\": \"Configuration Complete\", \"UniqueId\": \"CephNode1\",\"Data\": \"Ceph-node1 launch successful\" }" '
               - hostnamectl set-hostname ceph-node1
-              - echo "address=/.ceph-node1/10.0.1.111" | sudo tee -a /etc/dnsmasq.conf ; 
+              - echo "address=/.ceph-node1/10.0.1.111" | sudo tee -a /etc/dnsmasq.conf ;
               - sudo systemctl start dnsmasq ; sudo systemctl enable dnsmasq
               - sudo sed -i '/search/anameserver 127.0.0.1' /etc/resolv.conf
               - sudo mkdir /home/student/auto-pilot
@@ -1993,7 +1993,7 @@ Resources:
               - sudo wget -O /etc/hosts https://raw.githubusercontent.com/ksingh7/data-show/master/data-show-test-drive/hosts
               - sudo chown -R student:student /home/student
               - sudo wget -O /usr/share/ceph-ansible/group_vars/all.yml https://raw.githubusercontent.com/ksingh7/data-show/master/data-show-test-drive/all.yml
-              - sudo wget -O /home/student/ingest_dataset.sh https://raw.githubusercontent.com/ksingh7/data-show/master/data-show-test-drive/ingest_dataset.sh              
+              - sudo wget -O /home/student/ingest_dataset.sh https://raw.githubusercontent.com/ksingh7/data-show/master/data-show-test-drive/ingest_dataset.sh
               - sudo yum install -y unzip
 
   CephNode2:
@@ -2031,19 +2031,19 @@ Resources:
           Ebs:
             VolumeSize: '100'
             VolumeType: 'gp2'
-            DeleteOnTermination: 'true'  
+            DeleteOnTermination: 'true'
         - DeviceName: /dev/xvdd
           VirtualName: CephNode2-disk3
           Ebs:
             VolumeSize: '100'
             VolumeType: 'gp2'
-            DeleteOnTermination: 'true'  
+            DeleteOnTermination: 'true'
         - DeviceName: /dev/xvde
           VirtualName: CephNode2-disk4
           Ebs:
             VolumeSize: '100'
             VolumeType: 'gp2'
-            DeleteOnTermination: 'true'                                
+            DeleteOnTermination: 'true'
       Tags:
       - Key: Application
         Value:
@@ -2065,11 +2065,11 @@ Resources:
               runcmd:
               - 'curl -X PUT -H "Content-Type:" --data-binary "{ \"Status\" : \"SUCCESS\", \"Reason\": \"Configuration Complete\", \"UniqueId\": \"CephNode2\",\"Data\": \"Ceph-node2 launch successful\" }" '
               - hostnamectl set-hostname ceph-node2
-              - echo "address=/.ceph-admin/10.0.1.112" | sudo tee -a /etc/dnsmasq.conf ; 
+              - echo "address=/.ceph-admin/10.0.1.112" | sudo tee -a /etc/dnsmasq.conf ;
               - sudo systemctl start dnsmasq ; sudo systemctl enable dnsmasq
               - sudo wget -O /etc/hosts https://raw.githubusercontent.com/ksingh7/data-show/master/data-show-test-drive/hosts
               - sudo chown -R student:student /home/student
-  
+
   CephNode3:
     Type: AWS::EC2::Instance
     Properties:
@@ -2105,19 +2105,19 @@ Resources:
           Ebs:
             VolumeSize: '100'
             VolumeType: 'gp2'
-            DeleteOnTermination: 'true'  
+            DeleteOnTermination: 'true'
         - DeviceName: /dev/xvdd
           VirtualName: CephNode3-disk3
           Ebs:
             VolumeSize: '100'
             VolumeType: 'gp2'
-            DeleteOnTermination: 'true'  
+            DeleteOnTermination: 'true'
         - DeviceName: /dev/xvde
           VirtualName: CephNode3-disk4
           Ebs:
             VolumeSize: '100'
             VolumeType: 'gp2'
-            DeleteOnTermination: 'true'                                
+            DeleteOnTermination: 'true'
       Tags:
       - Key: Application
         Value:
@@ -2139,7 +2139,7 @@ Resources:
               runcmd:
               - 'curl -X PUT -H "Content-Type:" --data-binary "{ \"Status\" : \"SUCCESS\", \"Reason\": \"Configuration Complete\", \"UniqueId\": \"CephNode3\",\"Data\": \"Ceph-node3 launch successful\" }" '
               - hostnamectl set-hostname ceph-node3
-              - echo "address=/.ceph-admin/10.0.1.113" | sudo tee -a /etc/dnsmasq.conf ; 
+              - echo "address=/.ceph-admin/10.0.1.113" | sudo tee -a /etc/dnsmasq.conf ;
               - sudo systemctl start dnsmasq ; sudo systemctl enable dnsmasq
               - sudo wget -O /etc/hosts https://raw.githubusercontent.com/ksingh7/data-show/master/data-show-test-drive/hosts
               - sudo chown -R student:student /home/student
@@ -2182,10 +2182,10 @@ Outputs:
      Value: "teamuser1"
    OpenShiftWebConsolePassword:
      Description: "Web Console Password"
-     Value: "openshift"   
+     Value: "openshift"
    OpenShiftMasterNodeSSHIP:
      Description: "OpenShift OC CLI Node SSH IP"
-     Value: !GetAtt Master1.PublicIp 
+     Value: !GetAtt Master1.PublicIp
    OpenShiftMasterNodeSSHUserName:
      Description: "SSH User Name"
      Value: "cloud-user"
